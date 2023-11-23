@@ -1,15 +1,13 @@
 ﻿pipeline {
-  agent any
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
-  }
+  agent {dockerfile true}
+
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('dockerHUB')
   }
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t lloydmatereke/jenkins-docker-hub .'
+        sh 'docker build -t majabaric/jenkins-docker-hub .'
       }
     }
     stage('Login') {
@@ -19,7 +17,7 @@
     }
     stage('Push') {
       steps {
-        sh 'docker push lloydmatereke/jenkins-docker-hub'
+        sh 'docker push majabaric/jenkins-docker-hub'
       }
     }
   }
