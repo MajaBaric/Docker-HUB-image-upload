@@ -7,7 +7,7 @@
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t majabaric/jenkins-docker-hub .'
+        sh 'docker build -t majabaric/jenkins-docker-hub https://github.com/MajaBaric/Docker-HUB-image-upload.git'
       }
     }
     stage('Login') {
