@@ -6,6 +6,7 @@
   }
   stages {
     stage('Build') {
+	agent { dockerfile true }
       steps {
         sh 'docker build -t majabaric/jenkins-docker-hub https://github.com/MajaBaric/Docker-HUB-image-upload.git'
       }
