@@ -5,6 +5,12 @@
     DOCKERHUB_CREDENTIALS = credentials('dockerHUB')
   }
   stages {
+    stage("Git Checkout"){ 
+    steps{ 
+        git credentialsId: 'github', url:		'https://github.com/githubusername/githubreponame'
+        echo 'Git Checkout Completed'
+    }
+}
     stage('Build') {
 	agent { dockerfile true }
       steps {
