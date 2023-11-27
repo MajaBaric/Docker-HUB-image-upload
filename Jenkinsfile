@@ -11,7 +11,7 @@ pipeline {
         stage ('Build') {
             agent { dockerfile true }
             steps {
-                sh 'docker build -t majabaric/llvm-build-image'
+                sh 'docker build -t majabaric/llvm-build-image:0.1 .'
                 echo 'building llvm image done'
             }
         }
