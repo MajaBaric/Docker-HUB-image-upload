@@ -20,6 +20,8 @@ RUN apt-get update && \
 	g++-11 && \
     apt-get clean
 
+CMD ["echo", "Docherfile"]
+
 COPY . /root/
 
 WORKDIR /root
