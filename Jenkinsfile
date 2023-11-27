@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ("Git checkout") {
             steps{
-                git credentailsId: 'gitHUB', url: 'https://github.com/MajaBaric/Docker-HUB-image-upload.git'
+                git credentialsId: 'gitHUB', url: 'https://github.com/MajaBaric/Docker-HUB-image-upload.git'
                 echo 'Git checkout completed'
             }
         }
