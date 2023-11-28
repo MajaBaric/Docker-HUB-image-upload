@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         DOCKER_HOME = "/usr/bin"  
     }
@@ -16,8 +16,11 @@ pipeline {
         stage ('Build') {
             agent { dockerfile true }
             steps {
-                sh 'docker build -t majabaric/llvm-build-image:0.1 .'
-                echo 'building llvm image done'
+                script {
+                    def dockerCommand = "${DOCKER_HOME}/docker"
+                    sh 'docker build -t majabaric/llvm-build-image:0.1 .'
+                    echo 'building llvm image done'
+                }
             }
         }
     }
