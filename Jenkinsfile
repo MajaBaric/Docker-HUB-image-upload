@@ -22,7 +22,7 @@ pipeline {
         stage('Build llvm') {
             steps {
                 script {
-                    sh 'docker exec -it majabaric/llvm-build-image:0.1 /bin/bash'
+                    sh 'docker run -it majabaric/llvm-build-image:0.1 /bin/bash'
                     echo 'I am in the Build stage'
                     sh 'cd clang-worning'
                     sh 'mkdir build'
