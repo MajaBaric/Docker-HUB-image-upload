@@ -20,11 +20,6 @@ pipeline {
         }
 
         stage('Build llvm') {
-            agent {
-                docker {
-                    image 'majabaric/llvm-build-image:0.1'
-                }
-            }
             steps {
                 sh 'docker exec -it majabaric/llvm-build-image:0.1'
                 echo 'I am in the Build stage'
