@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    
+    environment {
+        DOCKER_HOME = "/usr/bin"  
+    }
+
     stages {
         stage ('Git checkout') {
             steps{
