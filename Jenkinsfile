@@ -21,13 +21,15 @@ pipeline {
 
         stage('Build llvm') {
             steps {
-                sh 'docker exec -it majabaric/llvm-build-image:0.1'
-                echo 'I am in the Build stage'
-                sh 'cd clang-worning'
-                sh 'mkdir build'
-                sh 'cd build'
-                sh 'cmake -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../llvm'
-                sh 'make'
+                script {
+                    sh 'docker exec -it majabaric/llvm-build-image:0.1'
+                    echo 'I am in the Build stage'
+                    sh 'cd clang-worning'
+                    sh 'mkdir build'
+                    sh 'cd build'
+                    sh 'cmake -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../llvm'
+                    sh 'make'
+                }
             }
         }
     }
