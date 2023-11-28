@@ -14,7 +14,7 @@ pipeline {
         }
 
         stage ('Build') {
-            agent { dockerfile true }
+
             steps {
                 script {
                     def dockerCommand = "${DOCKER_HOME}/docker"
