@@ -5,8 +5,8 @@ pipeline {
         stage ('Git checkout') {
             agent {
             docker {
-                image 'jenkins/jenkins:lts '
-                label 'label:jenkins-test'
+                image 'myjenkins-blueocean:2.426.1-1'
+                label 'label:jenkins-container-test'
             }
         }
             steps{
