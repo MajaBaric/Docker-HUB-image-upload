@@ -2,8 +2,18 @@ pipeline {
     agent none
 
     stages {
-        agent { label label:jenkins-test}
+        agent {
+            docker {
+                image 'jenkins/jenkins:lts '
+                label 'label:jenkins-test'
+            }
+        }
         stage ('Git checkout') {
+            agent {
+            docker {
+                image 'jenkins/jenkins:lts '
+                label 'label:jenkins-test'
+            }
             steps{
                 git credentialsId: 'gitHUB', url: 'https://github.com/MajaBaric/Docker-HUB-image-upload.git'
                 echo 'Git checkout completed'
@@ -11,7 +21,12 @@ pipeline {
         }
 
         stage ('Build') {
-            agent { label label:jenkins-test}
+            agent { 
+                dockerfile {
+                    filename 'Dockerfile'
+                    dir 'build'
+                }
+            }
             steps {
                 script {
                     sh 'docker build -t majabaric/llvm-build-image:0.1 .'
