@@ -12,9 +12,7 @@ pipeline {
 
         stage ('Build') {
             agent { 
-                dockerfile {
-                    filename 'Dockerfile'
-                    dir 'build'
+                    label 'jenkins-container-test'
                 }
             }
             steps {
