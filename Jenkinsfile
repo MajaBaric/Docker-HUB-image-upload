@@ -11,10 +11,7 @@ pipeline {
         }
 
         stage ('Build') {
-            agent { 
-                    label 'jenkins-container-test'
-                }
-            }
+            agent { label 'jenkins-container-test' }
             steps {
                 script {
                     sh 'docker build -t majabaric/llvm-build-image:0.1 .'
