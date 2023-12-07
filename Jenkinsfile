@@ -3,12 +3,7 @@ pipeline {
 
     stages {
         stage ('Git checkout') {
-            agent {
-            docker {
-                image 'myjenkins-blueocean:2.426.1-1'
-                label 'label:jenkins-container-test'
-            }
-        }
+            agent any
             steps{
                 git credentialsId: 'gitHUB', url: 'https://github.com/MajaBaric/Docker-HUB-image-upload.git'
                 echo 'Git checkout completed'
